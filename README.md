@@ -1,6 +1,9 @@
-/*
-собрать данные из нескольких форм form=form_data(form_id1,select_attr1); form=form.concat(form_data(form_id2,select_attr2)); ... form- массив для post
-*/
+
+author: Kvach
+
+jQuery плагин сбора данных формы в JSON объект, для последующей отправки его AJAX'ом
+
+собрать данные из нескольких форм: 
 
 <form action="" id="frm">
     <input type="text" name="txt">
