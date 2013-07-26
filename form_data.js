@@ -1,4 +1,4 @@
-/**
+/*
 
 author: Kvach
 
@@ -24,7 +24,7 @@ textvalue true/false если true берёт текст из выподающе
 
         var send_obj={};
 
-        var txt = $('input, textarea', this);
+        var txt = $('textarea, input[type!=checkbox][type!=radio]', this);
 
         txt.each(function(){
             if ($(this).attr(settings.select_attr)!== undefined) {
@@ -43,6 +43,24 @@ textvalue true/false если true берёт текст из выподающе
                 }
             }
         });
+
+        var checkBox = $('input[type=checkbox]');
+
+        checkBox.each(function(i, j){
+            var Name = $(this).attr('name') + '[' + i + ']';
+
+            if( $(this).prop('checked')===true ){
+                send_obj[Name] = $(this).attr('value');
+            }
+
+        });
+
+        var radio = $('input[type=radio]:checked');
+
+        $(radio).each(function(){
+            send_obj[$(this).attr('name')] = $(this).attr('value');
+        });
+
 
         return send_obj;
     };
@@ -75,6 +93,5 @@ jQuery(document).ready(function($) {
 // returned: 
 
 </script>
-
-
 */
+
