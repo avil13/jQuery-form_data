@@ -47,10 +47,14 @@ textvalue true/false если true берёт текст из выподающе
         var checkBox = $('input[type=checkbox]');
 
         checkBox.each(function(i, j){
-            var Name = $(this).attr('name') + '[' + i + ']';
+            var Name = $(this).attr('name');
+
+            if( send_obj[Name] === undefined ){
+                send_obj[Name] = [];
+            }
 
             if( $(this).prop('checked')===true ){
-                send_obj[Name] = $(this).attr('value');
+                send_obj[Name].push($(this).attr('value'));
             }
 
         });
