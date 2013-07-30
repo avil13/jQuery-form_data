@@ -24,7 +24,7 @@ textvalue true/false если true берёт текст из выподающе
 
         var send_obj={};
 
-        var txt = $('textarea, input[type!=checkbox][type!=radio]', this);
+        var txt = $('textarea, input[type!=checkbox][type!=radio]:enabled', this);
 
         txt.each(function(){
             if ($(this).attr(settings.select_attr)!== undefined) {
@@ -44,7 +44,7 @@ textvalue true/false если true берёт текст из выподающе
             }
         });
 
-        var checkBox = $('input[type=checkbox]');
+        var checkBox = $('input[type=checkbox]:enabled');
 
         checkBox.each(function(i, j){
             var Name = $(this).attr('name');
@@ -59,7 +59,7 @@ textvalue true/false если true берёт текст из выподающе
 
         });
 
-        var radio = $('input[type=radio]:checked');
+        var radio = $('input[type=radio]:checked:enabled');
 
         $(radio).each(function(){
             send_obj[$(this).attr('name')] = $(this).attr('value');
