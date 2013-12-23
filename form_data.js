@@ -24,43 +24,43 @@ textvalue true/false если true берёт текст из выподающе
 
         var txt = $('textarea, input[type=hidden],input[type!=checkbox][type!=radio]:enabled', this);
 
-        txt.each(function(){
-            if ($(this).attr(settings.select_attr)!== undefined) {
-                send_obj[$(this).attr(settings.select_attr)]=$(this).val();
+        $.each(txt, function(i, j){
+            if ($(j).attr(settings.select_attr)!== undefined && $(j).not(':disabled')) {
+                send_obj[$(j).attr(settings.select_attr)]=$(j).val();
             }
         });
 
         var select = $('select', this);
 
-        select.each(function(){
-            if ($(this).attr(settings.select_attr)!== undefined) {
+        $.each(select, function(i, j){
+            if ($(j).attr(settings.select_attr)!== undefined && $(j).not(':disabled')) {
                 if (settings.textvalue===true) {
-                    send_obj[$(this).attr(settings.select_attr)]=$(this).children("option:selected").text();
+                    send_obj[$(j).attr(settings.select_attr)]=$(j).children("option:selected").text();
                 }else{
-                    send_obj[$(this).attr(settings.select_attr)]=$(this).val();
+                    send_obj[$(j).attr(settings.select_attr)]=$(j).val();
                 }
             }
         });
 
         var checkBox = $('input[type=checkbox]:enabled');
 
-        checkBox.each(function(i, j){
-            var Name = $(this).attr('name');
+        $.each(checkBox, function(i, j){
+            var Name = $(j).attr('name');
 
             if( send_obj[Name] === undefined ){
                 send_obj[Name] = [];
             }
 
-            if( $(this).prop('checked')===true ){
-                send_obj[Name].push($(this).attr('value'));
+            if( $(j).prop('checked')===true ){
+                send_obj[Name].push($(j).attr('value'));
             }
 
         });
 
         var radio = $('input[type=radio]:checked:enabled');
 
-        $(radio).each(function(){
-            send_obj[$(this).attr('name')] = $(this).attr('value');
+        $.each(radio, function(i, j){
+            send_obj[$(j).attr('name')] = $(j).attr('value');
         });
 
 
@@ -79,7 +79,7 @@ textvalue true/false если true берёт текст из выподающе
 </form>
 
 <script>
-    
+
 jQuery(document).ready(function($) {
     $('#frm').submit(function(){\
 
@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
     });
 });
 
-// returned: 
+// returned:
 
 </script>
 */
