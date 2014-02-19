@@ -6,60 +6,60 @@ select_attr атрибут по которому называются поля
 textvalue true/false если true берёт текст из выподающего списка, если false значение.
 */
 
-(function($){
-   $.fn.form_data = function( options ){
+(function($) {
+    $.fn.form_data = function(options) {
 
-        if ( this === undefined) {
-            return("error");
+        if (this === undefined) {
+            return ("error");
         }
 
 
-        var settings = $.extend( {
-            'select_attr' : 'name',
-            'textvalue'   : false
+        var settings = $.extend({
+            'select_attr': 'name',
+            'textvalue': false
         }, options);
 
 
-        var send_obj={};
+        var send_obj = {};
 
-        var txt = $('textarea, input[type=hidden],input[type!=checkbox][type!=radio]:enabled', this);
+        var txt = $('textarea, input[type=hidden],input[type!=checkbox][type!=radio]:enabled:visible', this);
 
-        $.each(txt, function(i, j){
-            if ($(j).attr(settings.select_attr)!== undefined && $(j).not(':disabled')) {
-                send_obj[$(j).attr(settings.select_attr)]=$(j).val();
+        $.each(txt, function(i, j) {
+            if ($(j).attr(settings.select_attr) !== undefined && $(j).not(':disabled')) {
+                send_obj[$(j).attr(settings.select_attr)] = $(j).val();
             }
         });
 
-        var select = $('select', this);
+        var select = $('select:visible', this);
 
-        $.each(select, function(i, j){
-            if ($(j).attr(settings.select_attr)!== undefined && $(j).not(':disabled')) {
-                if (settings.textvalue===true) {
-                    send_obj[$(j).attr(settings.select_attr)]=$(j).children("option:selected").text();
-                }else{
-                    send_obj[$(j).attr(settings.select_attr)]=$(j).val();
+        $.each(select, function(i, j) {
+            if ($(j).attr(settings.select_attr) !== undefined && $(j).not(':disabled')) {
+                if (settings.textvalue === true) {
+                    send_obj[$(j).attr(settings.select_attr)] = $(j).children("option:selected").text();
+                } else {
+                    send_obj[$(j).attr(settings.select_attr)] = $(j).val();
                 }
             }
         });
 
-        var checkBox = $('input[type=checkbox]:enabled');
+        var checkBox = $('input[type=checkbox]:enabled:visible');
 
-        $.each(checkBox, function(i, j){
+        $.each(checkBox, function(i, j) {
             var Name = $(j).attr('name');
 
-            if( send_obj[Name] === undefined ){
+            if (send_obj[Name] === undefined) {
                 send_obj[Name] = [];
             }
 
-            if( $(j).prop('checked')===true ){
+            if ($(j).prop('checked') === true) {
                 send_obj[Name].push($(j).attr('value'));
             }
 
         });
 
-        var radio = $('input[type=radio]:checked:enabled');
+        var radio = $('input[type=radio]:checked:enabled:visible');
 
-        $.each(radio, function(i, j){
+        $.each(radio, function(i, j) {
             send_obj[$(j).attr('name')] = $(j).attr('value');
         });
 
@@ -96,4 +96,3 @@ jQuery(document).ready(function($) {
 
 </script>
 */
-
