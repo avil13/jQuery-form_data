@@ -22,7 +22,7 @@ textvalue true/false если true берёт текст из выподающе
 
         var send_obj = {};
 
-        var txt = $('textarea, input[type=hidden],input[type!=checkbox][type!=radio]:enabled:visible', this);
+        var txt = $('textarea:enabled:visible, input[type=hidden]:enabled, input[type!=checkbox][type!=radio]:enabled:visible', this);
 
         $.each(txt, function(i, j) {
             if ($(j).attr(settings.select_attr) !== undefined && $(j).not(':disabled')) {
