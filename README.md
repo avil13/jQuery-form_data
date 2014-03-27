@@ -48,3 +48,4 @@ form- массив для post
  }
 ```
 
+*Thans for idea, Kvach*
