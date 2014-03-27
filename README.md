@@ -48,4 +48,4 @@ form- массив для post
  }
 ```
 
-*Thans for idea, Kvach*
+*Thanks for idea, Kvach*
