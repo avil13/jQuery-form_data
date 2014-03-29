@@ -19,7 +19,7 @@ https://github.com/avil13/jQuery-form_data
 
         var send_obj = {};
 
-        var txt = $('textarea:enabled:visible, input[type=hidden]:enabled, input[type!=checkbox][type!=radio]:enabled:visible', this);
+        var txt = $('textarea:enabled:visible:enabled, input[type=hidden]:enabled, input[type!=checkbox][type!=radio]:enabled:visible', this);
 
         $.each(txt, function(i, j) {
             if ($(j).attr(settings.select_attr) !== undefined && $(j).not(':disabled')) {
@@ -27,7 +27,7 @@ https://github.com/avil13/jQuery-form_data
             }
         });
 
-        var select = $('select:visible', this);
+        var select = $('select:visible:enabled', this);
 
         $.each(select, function(i, j) {
             if ($(j).attr(settings.select_attr) !== undefined && $(j).not(':disabled')) {
