@@ -31,8 +31,8 @@ __JS__
 
 
 //собрать данные из нескольких форм 
-form=form_data(form_id1,select_attr1); 
-form=form.concat(form_data(form_id2,select_attr2)); 
+form=$('.form').form_data(); 
+form=form.concat($('.second-form').form_data()); 
 ... 
 form- массив для post
 ```
