@@ -1,7 +1,9 @@
 ###Скрипт для сбора данных из указанной формы###
 
 
-    
+
+[Demo](http://avil13.github.io/demo/form_data/ "demo")
+
 
 __HTML__
 
@@ -15,7 +17,7 @@ __HTML__
 
 __JS__
 
-```js 
+```js
 // Работа с плагином
  jQuery(document).ready(function($) {
     $('#frm').submit(function(){\
@@ -30,10 +32,10 @@ __JS__
 });
 
 
-//собрать данные из нескольких форм 
-form=$('.form').form_data(); 
-form=form.concat($('.second-form').form_data()); 
-... 
+//собрать данные из нескольких форм
+form=$('.form').form_data();
+form=form.concat($('.second-form').form_data());
+...
 form- массив для post
 ```
 
