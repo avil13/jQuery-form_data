@@ -26,7 +26,8 @@ __JS__
 
         var v = $('#frm').form_data({
             select_attr : 'name',
-            textvalue   : false
+            textvalue   : false,
+            callback: false
         });
 
         return false;
@@ -53,7 +54,8 @@ form- массив для post
 ```
 
 
-собрать данные из нескольких форм form=form_data(form_id1,select_attr1); form=form.concat(form_data(form_id2,select_attr2)); ... form- массив для post
+собрать данные из нескольких форм form=form_data(form_id1,select_attr1); ``` form=form.concat(form_data(form_id2,select_attr2)); ```... form- 
+массив для post
 
 ```html
 
@@ -64,10 +66,11 @@ form- массив для post
 
 ```
 
+
 ```js
 
 jQuery(document).ready(function($) {
-    $('#frm').submit(function(){\
+    $('#frm').submit(function(){
 
         var v = $('#frm').form_data({
             select_attr : 'name',
@@ -90,6 +93,24 @@ jQuery(document).ready(function($) {
 
 * ```callback``` Функция которой будет передан объект с данными
 
+
+
+В  ```callback```  можно  передать название функции которая будет выполнена с переданным в объектом в виде параметра
+
+К примеру 
+
+```js
+
+function log(data){
+  console.log( data );
+}
+
+$('#frm').form_data({
+            select_attr : 'name',
+            textvalue   : false,
+            callback: log
+        });
+```
 
 * * *
 
