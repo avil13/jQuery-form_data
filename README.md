@@ -71,7 +71,8 @@ jQuery(document).ready(function($) {
 
         var v = $('#frm').form_data({
             select_attr : 'name',
-            textvalue   : false
+            textvalue   : false,
+            callback: false
         });
 
         return false;
@@ -86,6 +87,8 @@ jQuery(document).ready(function($) {
 * ```select_attr``` атрибут по которому называются поля
 
 * ```textvalue true/false``` если ```true``` берёт текст из выподающего списка, если ```false``` значение.
+
+* ```callback``` Функция которой будет передан объект с данными
 
 
 * * *

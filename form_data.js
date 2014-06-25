@@ -13,7 +13,8 @@ https://github.com/avil13/jQuery-form_data
 
         var settings = $.extend({
             'select_attr': 'name',
-            'textvalue': false
+            'textvalue': false,
+            'callback': false
         }, options);
 
 
@@ -60,6 +61,10 @@ https://github.com/avil13/jQuery-form_data
             send_obj[$(j).attr('name')] = $(j).attr('value');
         });
 
+
+        if(settings.callback){
+            settings.callback(send_obj);
+        }
 
         return send_obj;
     };
