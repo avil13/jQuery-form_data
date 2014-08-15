@@ -24,7 +24,7 @@ __JS__
  jQuery(document).ready(function($) {
     $('#frm').submit(function(){\
 
-        var v = $('#frm').form_data({
+        var v = $('#frm').formData({
             select_attr : 'name',
             textvalue   : false,
             callback: false
@@ -36,8 +36,8 @@ __JS__
 
 
 //собрать данные из нескольких форм
-form=$('.form').form_data();
-form=form.concat($('.second-form').form_data());
+form=$('.form').formData();
+form=form.concat($('.second-form').formData());
 ...
 form- массив для post
 ```
@@ -54,7 +54,7 @@ form- массив для post
 ```
 
 
-собрать данные из нескольких форм form=form_data(form_id1,select_attr1); ``` form=form.concat(form_data(form_id2,select_attr2)); ```... form- 
+собрать данные из нескольких форм form=formData(form_id1,select_attr1); ``` form=form.concat(formData(form_id2,select_attr2)); ```... form-
 массив для post
 
 ```html
@@ -72,7 +72,7 @@ form- массив для post
 jQuery(document).ready(function($) {
     $('#frm').submit(function(){
 
-        var v = $('#frm').form_data({
+        var v = $('#frm').formData({
             select_attr : 'name',
             textvalue   : false,
             callback: false
@@ -97,7 +97,7 @@ jQuery(document).ready(function($) {
 
 В  ```callback```  можно  передать название функции которая будет выполнена с переданным в объектом в виде параметра
 
-К примеру 
+К примеру
 
 ```js
 
@@ -105,7 +105,7 @@ function log(data){
   console.log( data );
 }
 
-$('#frm').form_data({
+$('#frm').formData({
             select_attr : 'name',
             textvalue   : false,
             callback: log

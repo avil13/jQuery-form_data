@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test Form data plugin</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../form_data.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="col-xs-6 col-xs-offset-3">
+
+            <form action="" id="form" class="jumbotron">
+                <input type="hidden" name="hidden" value="TRUE">
+
+                <h2>
+                    Form data plugin
+                </h2>
+
+                <div class="form_group">
+                    <label for="text">text</label>
+                    <input type="text" name="text" value="some text" class="form-control">
+                </div>
+
+                <div class="form_group">
+                    <label for="text">text2[]</label>
+                    <input type="text" name="text2[]" value="some text2" class="form-control">
+                </div>
+
+                <div class="form_group">
+                    <label for="text">text2[]</label>
+                    <input type="text" name="text2[]" value="sometext3" class="form-control">
+                </div>
+
+                <div class="form_group">
+                    <label for="select">select</label>
+                    <select class="form-control" name="select">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="radio" value="rafio 1" checked>
+                        rafio 1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="radio" value="rafio 2">
+                        rafio 2
+                    </label>
+                </div>
+                <div class="radio disabled">
+                    <label>
+                        <input type="radio" name="radio" value="rafio 3" disabled>
+                        rafio 3
+                    </label>
+                </div>
+
+                <div class="form_group">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="checkbox" value="option1">option1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="checkbox" value="option2">option2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="checkbox" value="option3">option3
+                    </label>
+                </div>
+
+                <hr>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <pre class="well">
+
+            </pre>
+        </div>
+
+    </div>
+
+    <script>
+    var callBack = function(data) {
+        var res = JSON.stringify(data, undefined, 4);
+        $('.well').html(res);
+    };
+
+    $('#form').submit(function() {
+
+        $(this).formData({
+            callback: callBack
+        });
+
+
+        return false;
+    });
+    </script>
+
+
+</body>
+
+</html>
