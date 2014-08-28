@@ -129,7 +129,7 @@ $('#frm').formData({
 ```js
 
 function log(data){
-  // если  нполе не прошло валидацию, то вернется {fieldName: ['required', 'url', 'min']}
+  // если  поле не прошло валидацию, то вернется {fieldName: ['required', 'url', 'min']}
   if(data.fieldName){
       alert('Поле не прошло  проверку');
   }

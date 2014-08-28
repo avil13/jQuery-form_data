@@ -1,6 +1,7 @@
 /*
  form_data
  https://github.com/avil13/jQuery-form_data
+ v: 0.3
  */
 
 (function($) {
