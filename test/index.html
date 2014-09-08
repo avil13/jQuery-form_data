@@ -25,26 +25,26 @@
                 </h2>
 
                 <div class="form_group">
-                    <label for="text">text</label>
+                    <label class="control-label" for="text">text <span></span></label>
                     <input type="text" name="text" value="some text" class="form-control">
                 </div>
 
                 <div class="form_group">
-                    <label for="text">text2[]</label>
+                    <label class="control-label" for="text">text2[] <span></span></label>
                     <input type="text" name="text2[]" value="some text2" class="form-control">
                 </div>
 
                 <div class="form_group">
-                    <label for="text">text2[]</label>
+                    <label class="control-label" for="text">text2[] <span></span></label>
                     <input type="text" name="text2[]" value="sometext3" class="form-control">
                 </div>
 
                 <div class="form_group">
-                    <label for="select">select</label>
+                    <label class="control-label" for="select">select <span></span></label>
                     <select class="form-control" name="select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
 
@@ -84,30 +84,52 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
-            <pre class="well">
 
+
+            <pre class="well">
             </pre>
         </div>
 
     </div>
 
     <script>
-    var callBack = function(data) {
+    var translate = {
+        required: 'Обязательно должен быть заполнен',
+        url: 'Не является URL',
+        min: 'Должен быть не меньше двух'
+    }
+
+
+    var callBack = function(data, valid) {
         var res = JSON.stringify(data, undefined, 4);
         $('.well').html(res);
+
+        if(valid===true){
+            $('input, select').parent().removeClass('has-error').children('label').children('span').html('');
+        }
     };
 
     $('#form').submit(function() {
 
         $(this).formData({
-            callback: callBack,
             validator: {
                 text: ['required', 'url'],
                 select: ['min:2']
             },
-            invalid: function (data) {
-                console.log( data );
-            }
+            //
+            invalid: function(data) {
+                console.log(data);
+
+                $('input, select').parent().removeClass('has-error').children('label').children('span').html('');
+
+                $.each(data, function(index, val) {
+                    $('input[name=' + index + '], select[name=' + index + ']')
+                        .parent().addClass('has-error')
+                        .children('label').children('span').html('&nbsp;&nbsp;&nbsp;' + translate[val[0]]);
+                });
+            },
+            //
+            callback: callBack
         });
 
 
