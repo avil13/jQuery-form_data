@@ -121,9 +121,6 @@ function log(data, validation){
   console.log( data );
 }
 
-function success(){
-    clonsole.log('All right!!!');
-}
 
 $('#frm').formData({
             select_attr : 'name',
@@ -142,6 +139,10 @@ function log(data){
   if(data.fieldName){
       alert('Поле не прошло  проверку');
   }
+}
+
+function success(){
+    clonsole.log('All right!!!');
 }
 
 $('#frm').formData({
