@@ -2,7 +2,7 @@
 
 
 
-[Demo](http://avil13.github.io/demo/form_data/ "demo")
+[Demo](http://avil13.github.io/demo/form_data/ "demo") v.1.2
 ===========
 
 
@@ -104,6 +104,8 @@ jQuery(document).ready(function($) {
 
 * ```invalid``` функция которая выполняется в случае если валидация не пройдена. Получает объект в качестве ключей которого названия проверяемых полей, а в значениях массив не прошедших проверку методов.
 
+* ```valid``` функция которая выполняется в случае если валидация пройдена. Метод нужен для разделения валирадции и работы callback функции. callback функция будет вызывать в любом случае.
+
 
 В  ```callback```  можно  передать название функции которая будет выполнена с собранным объектом в виде параметра. Вторым параметром будет передан объект валидации, если она проводилась. Если валидация прошла то вернется TRUE если нет, то объект валидации.
 
@@ -112,8 +114,13 @@ jQuery(document).ready(function($) {
 
 ```js
 
-function log(data){
+function log(data, validation){
+  console.log( validation );
   console.log( data );
+}
+
+function success(){
+    clonsole.log('All right!!!');
 }
 
 $('#frm').formData({
@@ -139,7 +146,8 @@ $('#frm').formData({
             validator: {
                 fieldName: ['required', 'url', 'min:2']
             },
-            invalid: log
+            invalid: log,
+            valid: success
         });
 ```
 

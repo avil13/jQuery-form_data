@@ -93,6 +93,7 @@
     </div>
 
     <script>
+    // объект с текстами об ошибках
     var translate = {
         required: 'Обязательно должен быть заполнен',
         url: 'Не является URL',
@@ -103,35 +104,37 @@
     var callBack = function(data, valid) {
         var res = JSON.stringify(data, undefined, 4);
         $('.well').html(res);
-
-        if(valid===true){
-            $('input, select').parent().removeClass('has-error').children('label').children('span').html('');
-        }
     };
 
     $('#form').submit(function() {
 
         $(this).formData({
             validator: {
-                text: ['required', 'url'],
-                select: ['min:2']
+                text: ['required', 'url'], // Поле обязательно для заполнения и должно быть валидным url
+                select: ['min:2'] // Значение поля должно быть не меньше 2
             },
-            //
+            //  =====
             invalid: function(data) {
                 console.log(data);
 
                 $('input, select').parent().removeClass('has-error').children('label').children('span').html('');
 
                 $.each(data, function(index, val) {
+                    // Пишем сообщение об ошибке
                     $('input[name=' + index + '], select[name=' + index + ']')
                         .parent().addClass('has-error')
                         .children('label').children('span').html('&nbsp;&nbsp;&nbsp;' + translate[val[0]]);
                 });
             },
-            //
+            //  =====
+            valid: function () {
+                // Удаляем сообщение об ошибке, валидация проейдена
+                $('input, select').parent().removeClass('has-error').children('label').children('span').html('');
+                console.log( 'Success!!!' );
+            },
+            //  =====
             callback: callBack
         });
-
 
         return false;
     });

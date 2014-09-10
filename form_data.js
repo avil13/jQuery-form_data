@@ -1,7 +1,7 @@
 /*
  form_data
  https://github.com/avil13/jQuery-form_data
- v: 0.3
+ v: 0.3.2
  */
 
 (function($) {
@@ -18,6 +18,7 @@
          'textvalue': false,
          'validator': false,
          'invalid': false,
+         'valid': false,
          'callback': false
       }, options);
 
@@ -173,6 +174,8 @@
 
       if (!$.isEmptyObject(inValidEl) && settings.invalid) {
          settings.invalid(inValidEl);
+      }else if(settings.invalid) {
+         settings.valid();
       }
 
 
