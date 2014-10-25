@@ -1,0 +1,29 @@
+{
+  "name": "form_data",
+  "version": "1.3.2",
+  "homepage": "https://github.com/avil13/jQuery-form_data",
+  "authors": [
+    "avil13 <13.avil@gmail.com>"
+  ],
+  "description": "get data from form to json object and validate it",
+  "main": "form_data.js",
+  "keywords": [
+    "form",
+    "data",
+    "form",
+    "object",
+    "jquery",
+    "plugin",
+    "validation",
+    "ajax",
+    "check"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
