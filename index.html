@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>jQuery plugin numeric_format for formatting number data - @AVIL13 Git Page</title>
+    <title>jQuery plugin form_data, get form data to object - @AVIL13 Git Page</title>
     <meta name="description" content="List of jQuery plugins and php classes from AVIL13">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -33,40 +33,44 @@
         </header>
 
         <hr class="header">
-        <h2>Demo jQuery plugin to format numeric data</h2>
 
-        <a href="https://github.com/avil13/jQuery-numeric_format" target="_blank" class="git-link">GitHub repository</a>
+        <h2>Demo of jQuery plugin Form_data</h2>
+
+        <a href="https://github.com/avil13/jQuery-form_data" target="_blank" class="git-link">GitHub repository</a>
 
 
-        <ul class="format-demo">
-            <li>
-                <input type="text" class="fomat-input" value="Have You 1000000.01 $?">
-            </li>
+        <form action="." id="form" method="POST">
 
-            <li>
-                <select id="thSep">
-                    <option value=" ">Space</option>
-                    <option value="_">Underscore</option>
-                    <option value="'">Apostrophe</option>
+            <label for="myName">
+                <span>myName:</span>
+                <input type="text" name="myName" value="Aleksey">
+                <a href="#" class="hider">hide</a>
+            </label>
+
+            <label for="myInterest">
+                <span>myInterest:</span>
+                <select name="myInterest">
+                    <option value="web" selected>web</option>
+                    <option value="drums">drums</option>
+                    <option value="art">art</option>
                 </select>
-                <select id="dcSep">
-                    <option value=",">&nbsp; , &nbsp;</option>
-                    <option value=".">&nbsp; . &nbsp;</option>
-                </select>
-            </li>
+                <a href="#" class="hider">hide</a>
+            </label>
 
-            <li>
-                <a href="#" id="formatting" class="button">Format</a>
-                <p>
-                    <br>
-                    <span class="format-output">Have You 1000000.01 $?</span>
-                </p>
-            </li>
-        </ul>
 
+            <label for="myMessage">
+                <span>myMessage:</span>
+                <textarea name="myMessage" rows="7">Hello, World!!</textarea>
+                <a href="#" class="hider">hide</a>
+            </label>
+
+            <input type="submit" value="Check" class="button">
+
+        </form>
+
+        <pre class="console" id="cnsle"></pre>
 
         <hr class="m-tb">
-
 
         <h3>How to use?</h3>
         <p>
@@ -75,55 +79,47 @@
             Connect this plugin to your page:
         </p>
         <pre class="doc">
-            &lt;script src=&quot;/path/to/numeric_format.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;/path/to/form_data.js&quot;&gt;&lt;/script&gt;
         </pre>
         <p>
-            And select element what you want to format.
+            And get form data:
         </p>
         <pre class="doc">
-            $('p.nead-formatting').numeric_format();
+            var data = $(&quot;#form&quot;).formData();
         </pre>
+        <p>
+            This plugin has three options. <br>
+            <span class="cod">select_attr</span> - where the name attribute is taken.<br>
+            Default: <span class="var-el">'name'</span>
+
+            <br>
+            <br>
+
+            <span class="cod">textvalue</span> - boolean attribute. It's used to get value from select.<br>
+            If <span class="var-el">'false'</span> then get option value. If <span class="var-el">'true'</span> then get option text.<br>
+            Default: <span class="var-el">'false'</span>;
+
+            <br>
+            <br>
+
+            <span class="cod">callback</span> - callback function, get completed object<br>
+            Default: <span class="var-el">'false'</span>;
+
+        </p>
+
+        <pre class="doc pre">
+var data = $(&quot;#form&quot;).formData({
+                <span class="cod">select_attr</span>: <span class="var-el">&quot;name&quot;</span>,
+                <span class="cod">textvalue</span>: <span class="var-el">false</span>,
+                <span class="cod">callback</span>: <span class="var-el">false</span>
+            }); </pre>
 
 
-
-         <p>
-            This plugin has some options.
-
-                <table class="options">
-                    <tr class="hd">
-                        <th>option</th>
-                        <th align="right">default</th>
-                    </tr>
-                    <tr>
-                        <td class="cod">thSep</td>
-                        <td class="var-el" align="right"> space </td>
-                    </tr>
-                    <tr>
-                        <td class="cod">dcSep</td>
-                        <td class="var-el" align="right"> , </td>
-                    </tr>
-                    <tr>
-                        <td class="cod">watch</td>
-                        <td class="var-el" align="right"> FALSE </td>
-                    </tr>
-                </table>
-
-            </p>
-
-
-        <pre class="doc pre hljs">
-$('p.nead-formatting').numeric_format({
-                         <span class="cod">thSep</span>:<span class="var-el">&quot; &quot;</span>,
-                         <span class="cod">dcSep</span>:<span class="var-el">&quot;,&quot;</span>,
-                         <span class="cod">watch</span>:<span class="var-el">TRUE</span>
-                       });
-        </pre>
-
-
-
-
-
-
+        <hr class="m-tb">
+        <p>
+            P.S.:<br>
+            This is very simple plugin, but it's very helpful for me.
+        </p>
 
     </div>
 
@@ -136,13 +132,15 @@ $('p.nead-formatting').numeric_format({
                 </span>
 
 
+
+
                 <a target="_blank" class="a-fb" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Favil13.github.io"><i class="fa fa-facebook"></i> facebook</a>
                 <a target="_blank" class="a-tw" href="http://twitter.com/home?status=list+of+%23github+repositories+from+%40avil13+http%3A%2F%2Favil13.github.io%2F"><i class="fa fa-twitter"></i> twitter</a>
                 <a target="_blank" class="a-vk" href="http://vkontakte.ru/share.php?url=http%3A%2F%2Favil13.github.io"><i class="fa fa-vk"></i> vk.com</a>
+            </div>
         </div>
     </div>
-
-    <!-- @ -->
+        <!-- @ -->
 
        <div id="disqus_thread" class="container"></div>
     <script type="text/javascript">
@@ -159,7 +157,8 @@ $('p.nead-formatting').numeric_format({
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-<!-- @ -->
+
+    <!-- @ -->
 
     <div>
 
@@ -167,7 +166,8 @@ $('p.nead-formatting').numeric_format({
         <script>
         window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')
         </script>
-        <script src="numeric_format.js"></script>
+
+        <script src="https://rawgit.com/avil13/jQuery-form_data/master/form_data.js"></script>
         <script src="script.js"></script>
 
         <script src="/js/all.js"></script>
@@ -192,7 +192,7 @@ $('p.nead-formatting').numeric_format({
         </script>
 
         <script type="text/javascript">
-        // Yandex
+        // metrica
         (function(d, w, c) {
             (w[c] = w[c] || []).push(function() {
                 try {
@@ -227,7 +227,6 @@ $('p.nead-formatting').numeric_format({
                 <img src="//mc.yandex.ru/watch/24460400" style="position:absolute; left:-9999px;" alt="" />
             </div>
         </noscript>
-
 
 
     </div>

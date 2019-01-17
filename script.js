@@ -1,23 +1,24 @@
 jQuery(document).ready(function($) {
-    $('.fomat-input').keyup(function() {
-        var txt = $(this).val();
-        $('.format-output').text(txt);
+
+    $('#form').submit(function() {
+
+        var data = $('#form').formData({
+            callback: function(data) {
+                var txt = JSON.stringify(data, undefined, 4);
+                $('#cnsle').html(txt);
+            }
+        });
+        return false;
     });
 
 
-    $('#formatting').one('click', function() {
-        var thSep = $('#thSep').val();
-        var dcSep = $('#dcSep').val();
+    $('.hider').click(function() {
+        var $t = $(this).parent('label').children('input, select, textarea');
 
-       $('.format-output').text($('.fomat-input').val());
-
-
-        $('.format-output').numeric_format({
-            thSep: thSep,
-            dcSep: dcSep,
-            watch: true
-        });
+        $t.prop('disabled', !$t.prop('disabled'));
 
         return false;
     });
+
+
 });
